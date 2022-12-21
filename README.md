@@ -3,4 +3,4 @@ Implementation of a robotic model with RL, trained according to its somatosensor
 
 
 
-![Alt text](/res/imgs/graph_abs.pdf "Graphical Abstract")
+![Alt text](/res/images/graph_abs.pdf "Graphical Abstract")
