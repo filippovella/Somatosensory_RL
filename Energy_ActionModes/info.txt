@@ -1,0 +1,13 @@
+
+
+Experiment for the selection of energy modes according to the Energy Roboception
+
+The experiment is described in Section "Behavior Mode Selection through Reinforcement Learning" 
+
+of the paper 
+
+"Roboception and adaptation in a cognitive robot"
+
+by 
+
+Agnese Augello,Salvatore Gaglio,Ignazio Infantino,Umberto Maniscalco,Giovanni Pilato,Filippo Vella
