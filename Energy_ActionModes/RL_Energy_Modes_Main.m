@@ -18,49 +18,27 @@
 %function ReinforcementLearning_GreedPolicy
 
 function main
-
-    %time_max    = 14400 ;  to be erased
     
     addpath('../libs/','-end')
-    %addpath('/Users/filippo/Workshop/Cold_Projects/Robotics/Somatosensory_System/Code_Repo_1/libs/','-end')
 
     Max_Value   = 100;
     n_step      = 100;
 
-    % Setting the thresholds
-
-    % th=[75, 50, 30, 25]; to be erased
 
     threshold_recharge = 98;
 
-    %threshold_recharge = 100
-    % Setting the time constants
-
-    %tau_0 =600/log(0.5);% NORMAL Mode it is supposed to reach half of the charge in 10 mins
-    %tau_1 =(3600*2)/log(0.5); %HUNGRY it is supposed to reach half of the charge in 20 mins
-    %tau_2 =(3600*4)/log(0.5); %STARVED it is supposed to reach half of the charge in 40 mins
-    %tau_3 =(3600*8)/log(0.5); %STOP it is supposed to reach half of the charge in 80 mins
 
     state_names     =   ["Normal"; "Hungry"; "Starved";  "Out of Charge" ];
-
     action_names    =   ["Full"; "Economy"; "Recharge" ];
 
     N_States = size(state_names,1);
-
     N_Actions = size(action_names,1);
-
-    % Reward_State_Action=[   100,    50,         -10;
-    %                        50,     100,        -8;
-    %                       5,     80,          -4;
-    %                       -100,   -100,       -100];
 
     %from poisson
     %lambda_vect = [3,5,7]
     %sample_index =[2,4,8];
     
     
-    %keyboard
-    %N_states, N_actions, file_name
     Reward_State_Action = Load_Energy_Reward_Matrix(N_States, N_Actions, '../res/Energy/Reward_StateAction_Energy.csv');
   
        if(false)
