@@ -23,8 +23,7 @@ function main
     
     addpath('../libs/','-end')
     addpath('../Somatosensory/','-end')
-    %addpath('/Users/filippo/Workshop/Cold_Projects/Robotics/Somatosensory_System/Code_Repo_1/libs/','-end')
-
+    
     Max_Value   = 100;
     n_step      = 100;
 
@@ -156,7 +155,6 @@ function main
     end
 
     c=clock;
-    %time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3)),'_',num2str(c(4)),'_',num2str(c(5))];
     time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3))];
 
     disp('Reward State Actions')
