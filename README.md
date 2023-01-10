@@ -1,4 +1,4 @@
-# Somatorsensory_RL
+# Somatosensory_RL
 
 Implementation of a robotic model with RL, trained according to its somatosensory system
 
@@ -22,4 +22,4 @@ In robotics, perception is usually oriented at understanding what is happening i
 
 ##  Contact
 
-The code in this repository is available at (https://github.com/filippovella/Somatorsensory_RL).
+The code in this repository is available at (https://github.com/filippovella/Somatosensory_RL).
