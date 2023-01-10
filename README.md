@@ -8,7 +8,7 @@ Implementation of a robotic model with RL, trained according to its somatosensor
 - [Quantum planning for swarm robotics](#quantum-planning-for-swarm-robotics)
   - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
-  - [Graphical Abstract] (#graphical-abstract)
+  - [Graphical Abstract](#graphical-abstract)
   - [Contact](#contact)
   - [Citation](#citation)
 
