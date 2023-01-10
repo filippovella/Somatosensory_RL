@@ -7,7 +7,7 @@ Implementation of a robotic model with RL, trained according to its somatosensor
 - [Quantum planning for swarm robotics](#quantum-planning-for-swarm-robotics)
   - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
-  - [Graphical Abstract]
+  - [Graphical Abstract] (## Graphical Abstract)
   - [Contact](#contact)
   - [Citation](#citation)
 
@@ -21,4 +21,5 @@ Computational resources of quantum computing can enhance robotic motion, decisio
 ![Alt text](/res/images/graph_abs.png "Graphical Abstract")
 
 ##  Contact
-The code in this repository has been created and edited by [S. Zammuto](https://github.com/salvatorezam) and [M. Mannone](https://github.com/medusamedusa). For any inquiry about the implementation, feel free to contact us!
+
+The code in this repository is available at (https://github.com/medusamedusa](https://github.com/filippovella/Somatorsensory_RL).
