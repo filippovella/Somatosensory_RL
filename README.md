@@ -5,7 +5,7 @@ Implementation of a robotic model with RL, trained according to its somatosensor
 
 ## Table of Contents
 
-- [Quantum planning for swarm robotics](#quantum-planning-for-swarm-robotics)
+- [Reinforcement Learning for a Robot with a Somatosensory System](#RL_somatosensory)
   - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
   - [Graphical Abstract](#graphical-abstract)
