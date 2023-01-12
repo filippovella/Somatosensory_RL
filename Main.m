@@ -22,12 +22,10 @@ function Main
         disp(['Current Drive actions']);
         RL_CurrentPain(curr_d);
     end
+    
+    rmpath('./Energy_ActionModes/','-end')
+    rmpath('./Current_ActionSelection/','-end')
+    rmpath('./libs/','-end')
 
 
 return 
-
-% function Print_Menu()
-% 
-%     disp('1')
-% 
-% return 
