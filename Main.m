@@ -2,13 +2,13 @@ function Main
 
     addpath('./Energy_ActionModes/','-end')
     addpath('./Current_ActionSelection/','-end')
+    addpath('./Somatosensory/','-end')
     addpath('./libs/','-end')
-    curr_d = pwd
-    %Print_Menu()
     
-    list = {'Energy Modes','Energy Modes with a urge','Current Drive actions'};
-    %[indx,tf] = listdlg('ListString',list,'SelectionMode','single');
-     set(0, 'DefaultUICOntrolFontSize', 16)
+    curr_d = pwd
+    
+    list = {'Energy Modes','Energy Modes with an urge','Current Drive actions'};
+    set(0, 'DefaultUICOntrolFontSize', 16)
     [indx,tf] = listdlg('ListString',list,'SelectionMode','single', 'ListSize', [300 100], 'PromptString', 'RL Somatosensory','uh',50);
    
     
@@ -23,9 +23,9 @@ function Main
         RL_CurrentPain(curr_d);
     end
     
-    rmpath('./Energy_ActionModes/','-end')
-    rmpath('./Current_ActionSelection/','-end')
-    rmpath('./libs/','-end')
-
-
+    rmpath('./Energy_ActionModes/');
+    rmpath('./Current_ActionSelection/');
+    rmpath('./Somatosensory/');
+    rmpath('./libs/');
+ 
 return 
