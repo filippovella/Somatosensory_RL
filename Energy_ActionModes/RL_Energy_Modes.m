@@ -3,11 +3,7 @@
 %
 % Experiment for the selection of energy modes according to the Energy Roboception
 
-% The experiment is described in Section "Behavior Mode Selection through Reinforcement Learning" 
-
-% of the paper 
-
-% "Roboception and adaptation in a cognitive robot"
+% The experiment is described in "Behavior Mode Selection through Reinforcement Learning" 
 
 % by 
 
@@ -19,77 +15,39 @@
 
 function RL_Energy_Modes(current_dir)
 
-    %time_max    = 14400 ;  to be erased
-    
-    addpath('./libs/','-end')
-    addpath('./Somatosensory/','-end')
-    %addpath('/Users/filippo/Workshop/Cold_Projects/Robotics/Somatosensory_System/Code_Repo_1/libs/','-end')
-
     Max_Value   = 100;
     n_step      = 100;
 
-    % Setting the thresholds
-
-    %charge_th=[75, 50, 40, 15]; 
     threshold_recharge = 98;
-
-    %threshold_recharge = 100
-    % Setting the time constants
-
-    %tau_0 =600/log(0.5);% NORMAL Mode it is supposed to reach half of the charge in 10 mins
-    %tau_1 =(3600*2)/log(0.5); %HUNGRY it is supposed to reach half of the charge in 20 mins
-    %tau_2 =(3600*4)/log(0.5); %STARVED it is supposed to reach half of the charge in 40 mins
-    %tau_3 =(3600*8)/log(0.5); %STOP it is supposed to reach half of the charge in 80 mins
-
-    %tau_values =[tau_0, tau_1, tau_2, tau_3]
     tau_filename = './res/Energy/Tau_values.csv';
     charge_th_filename = './res/Energy/Charge_th.csv';
-    %csvwrite(tau_filename, tau_values)
     tau_value = csvread(tau_filename);
     charge_th=csvread(charge_th_filename);
-    
     
     state_names     =   ["Normal"; "Hungry"; "Starved";  "Out of Charge"];
     action_names    =   ["Full"; "Economy"; "Recharge" ];
 
     N_States = size(state_names,1);
-
     N_Actions = size(action_names,1);
 
-   
-    %from poisson
-    %lambda_vect = [3,5,7]
-    %sample_index =[2,4,8];
-    
-    
-    %keyboard
-    %N_states, N_actions, file_name
-    Reward_State_Action = Load_Energy_Reward_Matrix(N_States, N_Actions, './res/Energy/Reward_StateAction_Energy.csv');
 
+    Reward_State_Action = Load_Energy_Reward_Matrix(N_States, N_Actions, './res/Energy/Reward_StateAction_Energy.csv');
     Transition_Matrix = Load_Transition_Matrix(N_States, N_States, './res/Energy/Transition_Matrix_Energy.csv');
     
     Q_State_Action = zeros(N_States, N_Actions);
-
     N_State_Action= zeros(N_States, N_Actions);
-
     State_Value  = zeros(1,N_States);
 
     %RL Params
     alpha = 0.5;
     epsilon = 0.2;
     gamma = 0.7;
-     %N_glob_epoch = 1000
-    N_glob_epoch = 5
+     
+    N_glob_epoch = 5 ; %1000
 
-    %Global_Q_State_Action=[];
-    %Global_State_Value=[];
     Global_Q_State_Action = zeros(N_States, N_Actions, N_glob_epoch);
-    %Global_Q_State_Action=[]
-    %Global_State_Value = zeros(N_States, N_glob_epoch);
-    %Global_State_Value=[];
     Global_State_Value = zeros(1,N_States, N_glob_epoch);
   
-
     for k=1:N_glob_epoch
 
         disp(['Epoch = ', num2str(k)])
@@ -165,15 +123,11 @@ function RL_Energy_Modes(current_dir)
     end
 
     c=clock;
-    %time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3)),'_',num2str(c(4)),'_',num2str(c(5))];
     time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3))];
 
     disp('Reward State Actions')
     Reward_State_Action
     disp(' Q State vs Actions')
-
-    %Q_State_Action
-    %state_names  
 
     disp(' State Value')
     State_Value
@@ -184,8 +138,6 @@ function RL_Energy_Modes(current_dir)
     disp("Average Q_State_Action")
     Mean_Q = mean(Global_Q_State_Action,3)
     disp("Average State_Value")
-    %Mean_State_Value = mean(Global_State_Value,3)
-    %keyboard %check 2 or 3
     Mean_State_Value = mean(Global_State_Value,3)
 
     disp("variance Q_State_Action")
@@ -246,7 +198,7 @@ function [S, New_Charge] = Set_State(state, action, current, Charge, charge_th, 
 
 % this function was used in place of State_Transition, the state
 % modification have been characterized by the transition matrices that 
-%resemble the state change according to the evolutions here described
+% resemble the state change according to these evolutions
 
     dbg = 0
     Max_Current = 1.0;
@@ -254,10 +206,7 @@ function [S, New_Charge] = Set_State(state, action, current, Charge, charge_th, 
     Charge=1.0;
     Inhibition = 0.0;
     Modulation = 1.0;
-    
-    % state_names     =   ["Normal"; "Hungry"; "Starved";  "Out of Charge"];
-    %charge_th=                     [75, 50, 40, 15]; 
-    %action_names    =   ["Full"; "Economy"; "Recharge" ];
+
     if(action ==1)
         This_Current=1.0;
         New_Charge = Charge *( 1- exp((This_time - Prev_time)/ Tau_Discharge));
@@ -270,13 +219,13 @@ function [S, New_Charge] = Set_State(state, action, current, Charge, charge_th, 
     
     This_Exertion = Energy_Somatosensory(This_Current, Max_Current, Charge, Max_Charge,  Modulation, Inhibition)
         
-%state 4 is recharge
+    %state 4 is recharge
 
     if( Charge < charge_th(4))
         if(This_Exertion > 0.80)
             S = 4; %Out of Charge
         else
-            S = 3; %Out of Charge
+            S = 3; %"Starved"
         end
     elseif( Charge < charge_th(3))
          if(This_Exertion > 0.90)
@@ -301,9 +250,6 @@ function [S, New_Charge] = Set_State(state, action, current, Charge, charge_th, 
         
     end
         
-             
-    
-
     if(state ~= 4)
         ps = find(threshold_vect <= value)
 
