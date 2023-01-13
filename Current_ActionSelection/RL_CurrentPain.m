@@ -21,9 +21,8 @@ function RL_CurrentPain(current_dir)
     %8 marzo we consider a policy to choose the best action, meaning 
     % 3 aug cambiato il valore di alpha nell'implementazione sarsa
 
-    addpath('./libs/','-end')
-    addpath('./Somatosensory/','-end')
-  
+    %addpath('./libs/','-end')
+    %addpath('./Somatosensory/','-end')
     
     N_Actions = 3; %Three possible modes for transition probability
 
@@ -31,8 +30,6 @@ function RL_CurrentPain(current_dir)
     Max_Value   =1
     n_steps     =120%time steps 
     N_action_in_a_seq = 10;
-    
-    
    
     Pain_threshold = 0.5
     N_trials = 1000;
@@ -326,6 +323,10 @@ function RL_CurrentPain(current_dir)
     c=clock;
     %time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3)),'_',num2str(c(4)),'_',num2str(c(5))];
     time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3))];
+    
+    if ~exist('./Output/Current/backup', 'dir')
+       mkdir('./Output/Current/backup')
+    end
 
     filename = ['./Output/Current/backup/workspace_CurrentSS_', time_string, '.mat'];
     %save(filename)
