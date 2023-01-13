@@ -18,9 +18,8 @@ function Plot_3d_State_Action(Mean_Q, Var_Q_State_Action, fig_n, state_names, ac
         
     end
 
-    xticklabels({action_names(1),action_names(3),action_names(3)})
+    xticklabels({action_names(1),action_names(2),action_names(3)})
     yticklabels({state_names(1), state_names(2), state_names(3),state_names(4)})
-    %print([fname_fig,'_', time_string ],'-dpng')
     hold on
 
     for j = 1:N_States , 

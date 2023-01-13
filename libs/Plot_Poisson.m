@@ -3,6 +3,9 @@ function Plot_Poisson
 %lambda_vect = [2,4,6]
 lambda_vect = [3,5,7]
 sample_index =[2,4,8];
+
+    
+    
 Stored_Samples =[];
 x = 1:30;
 
