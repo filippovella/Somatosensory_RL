@@ -1,6 +1,6 @@
 # Somatosensory_RL
 
-Implementation of a robotic model with RL, trained according to its somatosensory system
+Implementation of a robotic model with Reinforcement Learning, trained according to its somatosensory system
 
 
 ## Table of Contents
@@ -10,7 +10,7 @@ Implementation of a robotic model with RL, trained according to its somatosensor
   - [Abstract](#abstract)
   - [Graphical Abstract](#graphical-abstract)
   - [Contact](#contact)
-  - [Citation](#citation)
+  #- [Citation](#citation)
 
 ## Abstract
 
