@@ -6,7 +6,7 @@
 
 % by 
 
-% Agnese Augello,Salvatore Gaglio,Ignazio Infantino,Umberto Maniscalco,Giovanni Pilato,Filippo Vella
+% Agnese Augello, Salvatore Gaglio, Ignazio Infantino, Umberto Maniscalco, Giovanni Pilato, Filippo Vella
 
 
 
@@ -37,88 +37,12 @@ function RL_EnergyModes_URGE(current_dir)
     N_States = size(state_names,1);
     N_Actions = size(action_names,1);
 
-% Reward_State_Action_without_URGE=[   100,    50,         -10;
-%                                     50,    100,        -8;
-%                                     5,     80,       -4;
-%                                     -100,   -100,       -100];
-% 
-% %with URGE
-% Reward_State_Action=[   100,    50,         -50;
-%                          90,    50,        -40;
-%                          80,     30,       -30;
-%                         -100,   -100,       -100];
-% 
-%   %with URGE POISSON                  
-% Reward_State_Action=[   184,    15,         0;
-%                          270,    90,       1;
-%                          224,     168,       8;
-%                         -100,   -100,       -100];
-%   
-% Reward_State_Action_check=Reward_State_Action - 100*ones(4,3)
-
 
     Reward_State_Action = Load_Energy_Reward_Matrix(N_States, N_Actions, './res/Energy/Reward_StateAction_Energy_URGE.csv');
 
-% lambda_vect = [1,2,3]
-% sample_index =[2,4,8];
-% 
-%   183.9397   15.3283    0.0091
-%   270.6706   90.2235    0.8593
-%   224.0418  168.0314    8.1015
-%%_______________________________
-
-% lambda_vect = [1.5,2.5,3.5]
-% sample_index =[2,4,8];
-%  Reward_State_Action=[ 251,   47,    0;
-%   257,  134 ,   3;
-%   185,  189  , 17];
-
-
-%251.0214   47.0665    0.1418
- % 256.5156  133.6019    3.1064
- % 184.9590  188.8123   16.8653
-
-%transition matrix for action WORK
 
     Transition_Matrix = Load_Transition_Matrix(N_States, N_States, './res/Energy/Transition_Matrix_Energy_URGE.csv');
 
-% if(false)
-% 
-%     Transition_Matrix(:,:,1)=[
-%         0.4, 0.5,   0.1,     0;
-%         0,  0.4,    0.5,     0.1;
-%         0,  0,      0.4,     0.6;
-%         0,  0,      0,       1];
-% 
-%     %transition matrix for action Economy WORK
-% 
-%     Transition_Matrix(:,:,2)=[
-%         0.5, 0.4,   0.1,          0;
-%         0,  0.5,    0.4,        0.1;
-%         0,  0,      0.7,        0.3;
-%         0,  0,      0,           1];
-% 
-% 
-% 
-%     %transition matrix for action Recharge
-% 
-%     Transition_Matrix(:,:,3)=[
-%         1,0,0,0;
-%         1,0,0,0;
-%         1,0,0,0;
-%          0,0,0,1;
-%     ];
-% 
-% 
-%     %transition matrix for action STOP
-% 
-%     Transition_Matrix(:,:,4)=[
-%         0.97,   0.02,    0.01,          0;
-%         0.0,      0.95,   0.04,         0.01;
-%         0.0,      0.0,      0.9,       0.1;
-%         0.0,      0.0,      0.0,        1];
-% 
-% end
 
     Q_State_Action = zeros(N_States, N_Actions);
     N_State_Action= zeros(N_States, N_Actions);
@@ -135,21 +59,20 @@ function RL_EnergyModes_URGE(current_dir)
     N_glob_epoch = 5
 
     Global_Q_State_Action = zeros(N_States, N_Actions, N_glob_epoch);
-    %Global_Q_State_Action=[]
     Global_State_Value = zeros(1, N_States, N_glob_epoch);
+    Q_State_Action = zeros(N_States, N_Actions);
+    N_State_Action= zeros(N_States, N_Actions);
+    State_Value  = zeros(1,N_States);
+
 
     for k=1:N_glob_epoch
 
-        %N_trials = 100000
         disp(['Epoch = ', num2str(k)])
         N_trials = 10000;
         State = 1;
         N_samples = N_trials * 10;
 
-        Q_State_Action = zeros(N_States, N_Actions);
-        N_State_Action= zeros(N_States, N_Actions);
-        State_Value  = zeros(1,N_States);
-
+      
         State_time = zeros(1,N_samples);
         Reward_time= zeros(1,N_samples);
         Value_time = zeros(1,N_samples);
@@ -199,7 +122,6 @@ function RL_EnergyModes_URGE(current_dir)
         end
 
         %normalize according the number of chosen actions
-        %N_State_Action = normr(N_State_Action)
         N_State_Action_p =  bsxfun(@times, N_State_Action, 1./(sum(N_State_Action, 2)));
 
         for i= 1:N_States
