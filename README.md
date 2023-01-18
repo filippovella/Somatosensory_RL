@@ -10,7 +10,7 @@ Implementation of a robotic model with Reinforcement Learning, trained according
   - [Abstract](#abstract)
   - [Graphical Abstract](#graphical-abstract)
   - [Contact](#contact)
-  %- [Citation](#citation)
+   <! --- (- [Citation](#citation)--->
 
 ## Abstract
 
