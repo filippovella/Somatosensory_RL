@@ -20,6 +20,10 @@ In robotics, perception is usually oriented at understanding what is happening i
 
 ![Graphical Abstract of the Robot Somatosensory System](/res/images/graph_abs.png "Graphical Abstract")
 
+##  Citation
+
+This repository collects the code for the experiments for the paper "Roboception and adaptation in a cognitive robot"
+
 ##  Contact
 
 The code in this repository is available at (https://github.com/filippovella/Somatosensory_RL).
