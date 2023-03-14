@@ -5,12 +5,12 @@ Implementation of a robotic model with Reinforcement Learning, trained according
 
 ## Table of Contents
 
-- [Reinforcement Learning for a Robot with a Somatosensory System](#RL_somatosensory)
+  - [Reinforcement Learning for a Robot with a Somatosensory System](#RL_somatosensory)
   - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
   - [Graphical Abstract](#graphical-abstract)
+  - [Citation](#citation)
   - [Contact](#contact)
-   <!-- (- [Citation](#citation)- -->
 
 ## Abstract
 
