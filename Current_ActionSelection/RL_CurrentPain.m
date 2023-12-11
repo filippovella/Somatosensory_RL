@@ -1,6 +1,6 @@
-% RL_EnergyModes_URGE
+% RL_Current Action Selection
 
-% Experiment for the selection of energy modes according to the Energy Roboception
+% Experiment for the selection of the action according to the current value
 
 % The experiment is described in Section "Current Roboception driven behavior" 
 
