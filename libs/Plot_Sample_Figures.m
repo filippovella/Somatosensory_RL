@@ -2,11 +2,8 @@ function out = Plot_Sample_Figures(final_iter, State_time_mat, reward_mat, Pain_
 
             out=0;
             c=clock;
-            %time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3)),'_',num2str(c(4)),'_',num2str(c(5))];
             time_string = ['time_', num2str(c(1)),'_',num2str(c(2)),'_',num2str(c(3)),'_',num2str(c(4)),'_',num2str(c(5))];
 
-            %N_Samples = 3 
-            %sample_indx = round(linspace(1, final_iter, N_Samples))
             sample_indx = [final_iter];
             mean_param = [1];
 
@@ -24,7 +21,6 @@ function out = Plot_Sample_Figures(final_iter, State_time_mat, reward_mat, Pain_
                     clf
                     hold on 
                     plot(   State_time_mat_avg,'-','LineWidth',3);
-                    %plot(   Reward_mat_avg  , 'b-'); 
                     plot(    Pain_mat_avg , 'r-.','LineWidth',2); 
                     
                     lgd = legend('State', 'pain')
@@ -60,7 +56,6 @@ function out = Plot_Sample_Figures(final_iter, State_time_mat, reward_mat, Pain_
                     hold on
                     plot( Reward_mat_avg,'b-');  %rewad -pain
                     plot(  Pain_mat_avg , 'r-'); 
-                    %plot( State_time_mat_avg  ,'-');
                     legend( 'Reward', 'Pain', 'Pain State')
                     print(['./Output/Current/Pain_State','_iter_', num2str(sample_indx(i)),'_avg_', num2str(mean_param(m)),'_',time_string,'_', num2str(sample_indx(i))],'-dpng')
 
