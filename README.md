@@ -22,7 +22,11 @@ In robotics, perception is usually oriented at understanding what is happening i
 
 ##  Citation
 
-This repository collects the code for the experiments in the paper "Roboception and adaptation in a cognitive robot", Elsevier Robotics and Autonomous Systems, https://doi.org/10.1016/j.robot.2023.104400
+This repository collects the code for the experiments in the paper:
+
+Augello, Agnese, Salvatore Gaglio, Ignazio Infantino, Umberto Maniscalco, Giovanni Pilato, and Filippo Vella. *Roboception and adaptation in a cognitive robot*. Robotics and Autonomous Systems 164 (2023): 104400.
+
+https://doi.org/10.1016/j.robot.2023.104400
 
 ##  Contact
 
